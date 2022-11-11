@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/btreeLogic/interface/BNode.tscn" type="PackedScene" id=1]
+
+[node name="BRepeatTilFail" instance=ExtResource( 1 )]
+hint_tooltip = "It will execute its child until it returns a failed state. Always succeeds once repetition is over."
+title = "Repeat 'til Failed"
+slot/0/left_enabled = true
+slot/0/left_color = Color( 0.4, 0.701961, 1, 1 )
+slot/0/right_enabled = true
+slot/0/right_color = Color( 0.501961, 0.901961, 0.6, 1 )
+base_node = "RepeatTilFail"
+
+[node name="parameters" parent="." index="0"]
+margin_right = 135.0

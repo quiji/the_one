@@ -1,0 +1,87 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/btreeLogic/interface/create-node-dialog.gd" type="Script" id=1]
+
+[node name="create-node-dialog" type="WindowDialog"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -187.0
+margin_top = -64.0
+margin_right = 203.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 374, 128 )
+window_title = "Create new leaf..."
+resizable = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="margins" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 8
+custom_constants/margin_top = 20
+custom_constants/margin_left = 8
+custom_constants/margin_bottom = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="vbox" type="VBoxContainer" parent="margins"]
+margin_left = 8.0
+margin_top = 20.0
+margin_right = 382.0
+margin_bottom = 120.0
+custom_constants/separation = 16
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="margins/vbox"]
+margin_right = 374.0
+margin_bottom = 14.0
+text = "Enter namespace /  leaf name. Namespace can be left out."
+autowrap = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="margins/vbox"]
+margin_top = 30.0
+margin_right = 374.0
+margin_bottom = 54.0
+
+[node name="leaf-name-edt" type="LineEdit" parent="margins/vbox/HBoxContainer"]
+margin_right = 374.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+placeholder_text = "namespace / leaf name"
+placeholder_alpha = 0.4
+
+[node name="buttons" type="HBoxContainer" parent="margins/vbox"]
+margin_top = 70.0
+margin_right = 374.0
+margin_bottom = 90.0
+custom_constants/separation = 18
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="create-btn" type="Button" parent="margins/vbox/buttons"]
+margin_left = 249.0
+margin_right = 302.0
+margin_bottom = 20.0
+text = "Create"
+
+[node name="cancel-btn" type="Button" parent="margins/vbox/buttons"]
+margin_left = 320.0
+margin_right = 374.0
+margin_bottom = 20.0
+text = "Cancel"
+
+[connection signal="text_entered" from="margins/vbox/HBoxContainer/leaf-name-edt" to="." method="_on_leafnameedt_text_entered"]
+[connection signal="pressed" from="margins/vbox/buttons/create-btn" to="." method="_on_createbtn_pressed"]
+[connection signal="pressed" from="margins/vbox/buttons/cancel-btn" to="." method="_on_cancelbtn_pressed"]

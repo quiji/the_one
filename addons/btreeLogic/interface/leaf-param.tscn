@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://addons/btreeLogic/interface/leaf-param.gd" type="Script" id=1]
+[ext_resource path="res://addons/btreeLogic/interface/theming/normal_save_btn.tres" type="StyleBox" id=2]
+[ext_resource path="res://addons/btreeLogic/interface/theming/hover_save_btn.tres" type="StyleBox" id=3]
+[ext_resource path="res://addons/btreeLogic/interface/theming/normal_close_btn.tres" type="StyleBox" id=4]
+[ext_resource path="res://addons/btreeLogic/interface/theming/hover_close_btn.tres" type="StyleBox" id=5]
+
+[sub_resource type="StyleBoxFlat" id=1]
+resource_local_to_scene = true
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[node name="leaf-param" type="PanelContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hbox" type="HBoxContainer" parent="."]
+margin_right = 48.0
+margin_bottom = 40.0
+
+[node name="export-typing-lbl" type="Label" parent="hbox"]
+margin_top = 13.0
+margin_bottom = 27.0
+rect_min_size = Vector2( 0, 14 )
+size_flags_horizontal = 3
+align = 2
+
+[node name="export-name-lbl" type="Label" parent="hbox"]
+margin_left = 4.0
+margin_top = 13.0
+margin_right = 4.0
+margin_bottom = 27.0
+rect_min_size = Vector2( 0, 14 )
+size_flags_horizontal = 3
+
+[node name="connect-btn" type="Button" parent="hbox"]
+margin_left = 8.0
+margin_right = 44.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 14 )
+custom_colors/font_color = Color( 0.286275, 0.207843, 0.294118, 1 )
+custom_styles/hover = ExtResource( 3 )
+custom_styles/normal = ExtResource( 2 )
+text = " == "
+
+[node name="tunnel-name-lbl" type="Label" parent="hbox"]
+margin_left = 48.0
+margin_top = 13.0
+margin_right = 48.0
+margin_bottom = 27.0
+
+[node name="disconnect-btn" type="Button" parent="hbox"]
+visible = false
+margin_left = 52.0
+margin_right = 87.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 14 )
+custom_styles/hover = ExtResource( 5 )
+custom_styles/normal = ExtResource( 4 )
+text = "  x  "
+
+[connection signal="pressed" from="hbox/connect-btn" to="." method="_on_connectbtn_pressed"]
+[connection signal="pressed" from="hbox/disconnect-btn" to="." method="_on_disconnectbtn_pressed"]

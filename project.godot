@@ -1,0 +1,166 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "AnimationPlayer",
+"class": "AsepriteAnimPlayer",
+"language": "GDScript",
+"path": "res://lib/animations/AsepriteAnims.gd"
+}, {
+"base": "Node",
+"class": "BehaviourFailer",
+"language": "GDScript",
+"path": "res://addons/btreeLogic/nodes/Failer.gd"
+}, {
+"base": "Node",
+"class": "BehaviourInverter",
+"language": "GDScript",
+"path": "res://addons/btreeLogic/nodes/Inverter.gd"
+}, {
+"base": "Node",
+"class": "BehaviourLimiter",
+"language": "GDScript",
+"path": "res://addons/btreeLogic/nodes/Limiter.gd"
+}, {
+"base": "Node",
+"class": "BehaviourRepeatFail",
+"language": "GDScript",
+"path": "res://addons/btreeLogic/nodes/RepeatTilFail.gd"
+}, {
+"base": "Node",
+"class": "BehaviourRepeatSucceed",
+"language": "GDScript",
+"path": "res://addons/btreeLogic/nodes/RepatTilSucceed.gd"
+}, {
+"base": "Node",
+"class": "BehaviourRepeater",
+"language": "GDScript",
+"path": "res://addons/btreeLogic/nodes/Repeater.gd"
+}, {
+"base": "Node",
+"class": "BehaviourSelector",
+"language": "GDScript",
+"path": "res://addons/btreeLogic/nodes/BehaviourSelector.gd"
+}, {
+"base": "Node",
+"class": "BehaviourSequence",
+"language": "GDScript",
+"path": "res://addons/btreeLogic/nodes/BehaviourSequence.gd"
+}, {
+"base": "Node",
+"class": "BehaviourSucceed",
+"language": "GDScript",
+"path": "res://addons/btreeLogic/nodes/Succeeder.gd"
+}, {
+"base": "Node",
+"class": "BehaviourTree",
+"language": "GDScript",
+"path": "res://addons/btreeLogic/nodes/BehaviourTree.gd"
+}, {
+"base": "Camera2D",
+"class": "CameraMan",
+"language": "GDScript",
+"path": "res://gui/camera/camera_man.gd"
+}, {
+"base": "Node",
+"class": "CharacterAction",
+"language": "GDScript",
+"path": "res://lib/states/State.gd"
+}, {
+"base": "Node",
+"class": "CharacterActionStates",
+"language": "GDScript",
+"path": "res://lib/states/states.gd"
+}, {
+"base": "Tween",
+"class": "CurveTween",
+"language": "GDScript",
+"path": "res://lib/smoothstep/CurveTween.gd"
+}, {
+"base": "Node",
+"class": "Jump",
+"language": "GDScript",
+"path": "res://lib/physics/Jump.gd"
+}, {
+"base": "Node",
+"class": "JumpPhysics",
+"language": "GDScript",
+"path": "res://lib/physics/JumpPhysics.gd"
+}, {
+"base": "Node",
+"class": "Leaf",
+"language": "GDScript",
+"path": "res://addons/btreeLogic/nodes/BehaviourClass.gd"
+} ]
+_global_script_class_icons={
+"AsepriteAnimPlayer": "",
+"BehaviourFailer": "",
+"BehaviourInverter": "",
+"BehaviourLimiter": "",
+"BehaviourRepeatFail": "",
+"BehaviourRepeatSucceed": "",
+"BehaviourRepeater": "",
+"BehaviourSelector": "",
+"BehaviourSequence": "",
+"BehaviourSucceed": "",
+"BehaviourTree": "",
+"CameraMan": "res://gui/camera/icon.png",
+"CharacterAction": "",
+"CharacterActionStates": "",
+"CurveTween": "",
+"Jump": "",
+"JumpPhysics": "",
+"Leaf": ""
+}
+
+[application]
+
+config/name="The One"
+config/description="Github Gameoff 2022 entry, The One, a game all about cliches"
+run/main_scene="res://main.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+Game="*res://lib/Game.gd"
+SceneSwitcher="*res://lib/SceneSwitcher.tscn"
+Console="*res://tools/console/Console.tscn"
+IntegerResolutionHandler="*res://addons/integer_resolution_handler/integer_resolution_handler.gd"
+
+[debug]
+
+gdscript/warnings/enable=false
+
+[display]
+
+window/integer_resolution_handler/base_width=640
+window/integer_resolution_handler/base_height=480
+window/size/width=320
+window/size/height=180
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/integer_resolution_handler/plugin.cfg" )
+
+[input]
+
+Console={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":96,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[rendering]
+
+2d/snapping/use_gpu_pixel_snap=true
+environment/default_environment="res://default_env.tres"
+quality/2d/use_pixel_snap=true

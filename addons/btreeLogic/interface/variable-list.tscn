@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://addons/btreeLogic/interface/variable-list.gd" type="Script" id=1]
+[ext_resource path="res://addons/btreeLogic/interface/theming/normal_save_btn.tres" type="StyleBox" id=2]
+[ext_resource path="res://addons/btreeLogic/interface/theming/hover_save_btn.tres" type="StyleBox" id=3]
+
+[node name="variable-list" type="MarginContainer"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -159.0
+margin_bottom = 110.0
+grow_horizontal = 0
+custom_constants/margin_right = 80
+custom_constants/margin_top = 4
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="vbox" type="VBoxContainer" parent="."]
+margin_top = 4.0
+margin_right = 80.0
+margin_bottom = 110.0
+
+[node name="show-btn" type="Button" parent="vbox"]
+margin_right = 80.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 80, 0 )
+size_flags_horizontal = 8
+custom_colors/font_color = Color( 0.286275, 0.207843, 0.294118, 1 )
+custom_styles/hover = ExtResource( 3 )
+custom_styles/normal = ExtResource( 2 )
+toggle_mode = true
+text = "Params"
+
+[node name="list" type="VBoxContainer" parent="vbox"]
+visible = false
+margin_top = 24.0
+margin_right = 91.0
+margin_bottom = 44.0
+
+[node name="add-param" type="Button" parent="vbox/list"]
+margin_right = 91.0
+margin_bottom = 20.0
+size_flags_horizontal = 8
+custom_colors/font_color = Color( 0.286275, 0.207843, 0.294118, 1 )
+custom_styles/hover = ExtResource( 3 )
+custom_styles/normal = ExtResource( 2 )
+text = "add"
+
+[connection signal="toggled" from="vbox/show-btn" to="." method="_on_showbtn_toggled"]
+[connection signal="pressed" from="vbox/list/add-param" to="." method="_on_addparam_pressed"]

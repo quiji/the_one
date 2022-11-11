@@ -1,0 +1,78 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/btreeLogic/interface/assign-param-dialog.gd" type="Script" id=1]
+
+[node name="assign-param-dialog" type="WindowDialog"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -132.0
+margin_top = -59.5
+margin_right = 132.0
+margin_bottom = 59.5
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="marginc" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 8
+custom_constants/margin_top = 16
+custom_constants/margin_left = 8
+custom_constants/margin_bottom = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="vbox" type="VBoxContainer" parent="marginc"]
+margin_left = 8.0
+margin_top = 16.0
+margin_right = 256.0
+margin_bottom = 115.0
+custom_constants/separation = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="msg-lbl" type="Label" parent="marginc/vbox"]
+margin_right = 248.0
+margin_bottom = 14.0
+autowrap = true
+
+[node name="param-list-btn" type="OptionButton" parent="marginc/vbox"]
+margin_left = 109.0
+margin_top = 22.0
+margin_right = 138.0
+margin_bottom = 42.0
+size_flags_horizontal = 4
+
+[node name="notice-lbl" type="Label" parent="marginc/vbox"]
+margin_top = 50.0
+margin_right = 248.0
+margin_bottom = 64.0
+autowrap = true
+
+[node name="hbox" type="HBoxContainer" parent="marginc/vbox"]
+margin_top = 72.0
+margin_right = 248.0
+margin_bottom = 92.0
+custom_constants/separation = 8
+alignment = 2
+
+[node name="connect-btn" type="Button" parent="marginc/vbox/hbox"]
+margin_left = 122.0
+margin_right = 186.0
+margin_bottom = 20.0
+text = "Connect"
+
+[node name="cancel-btn" type="Button" parent="marginc/vbox/hbox"]
+margin_left = 194.0
+margin_right = 248.0
+margin_bottom = 20.0
+text = "Cancel"
+
+[connection signal="pressed" from="marginc/vbox/hbox/connect-btn" to="." method="_on_connectbtn_pressed"]
+[connection signal="pressed" from="marginc/vbox/hbox/cancel-btn" to="." method="_on_cancelbtn_pressed"]

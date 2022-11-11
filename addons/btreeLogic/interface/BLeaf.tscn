@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://addons/btreeLogic/interface/BNode.tscn" type="PackedScene" id=1]
+[ext_resource path="res://addons/btreeLogic/interface/BLeaf.gd" type="Script" id=2]
+
+[node name="BLeaf" instance=ExtResource( 1 )]
+slot/0/left_enabled = true
+slot/0/left_color = Color( 0.4, 0.701961, 1, 1 )
+slot/1/left_enabled = false
+slot/1/left_type = 0
+slot/1/left_color = Color( 1, 1, 1, 1 )
+slot/1/right_enabled = false
+slot/1/right_type = 0
+slot/1/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 2 )
+base_node = "CustomLeafNode"
+
+[node name="parameters" parent="." index="0"]
+size_flags_horizontal = 3
+
+[node name="vbox" type="VBoxContainer" parent="parameters" index="0"]
+margin_right = 108.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+custom_constants/separation = 2
+alignment = 1
+
+[node name="open-script-btn" type="Button" parent="." index="1"]
+margin_left = 16.0
+margin_top = 41.0
+margin_right = 56.0
+margin_bottom = 71.0
+rect_min_size = Vector2( 40, 30 )
+size_flags_horizontal = 0
+text = "Edit"
+
+[connection signal="pressed" from="open-script-btn" to="." method="_on_openscriptbtn_pressed"]

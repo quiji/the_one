@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/btreeLogic/interface/BNode.tscn" type="PackedScene" id=1]
+
+[node name="BSequence" instance=ExtResource( 1 )]
+hint_tooltip = "It runs its children one by one until one fails. It succeeds otherwise."
+title = "Sequence"
+slot/0/left_enabled = true
+slot/0/left_color = Color( 0.4, 0.701961, 1, 1 )
+slot/0/right_enabled = true
+slot/0/right_color = Color( 0.501961, 0.901961, 0.6, 1 )
+growing_slots = true
+base_node = "Sequence"

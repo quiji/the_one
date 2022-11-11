@@ -1,0 +1,74 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://addons/btreeLogic/interface/TreeEditor.gd" type="Script" id=1]
+[ext_resource path="res://addons/btreeLogic/interface/create-node-dialog.tscn" type="PackedScene" id=2]
+[ext_resource path="res://addons/btreeLogic/interface/variable-list.tscn" type="PackedScene" id=3]
+[ext_resource path="res://addons/btreeLogic/interface/assign-param-dialog.tscn" type="PackedScene" id=4]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[node name="TreeEditor" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="panel" type="PanelContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="vbox" type="VBoxContainer" parent="panel"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 633.0
+margin_bottom = 353.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="PanelContainer" parent="panel/vbox"]
+margin_right = 626.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 0, 20 )
+custom_styles/panel = SubResource( 1 )
+
+[node name="toolbar" type="HBoxContainer" parent="panel/vbox/Panel"]
+margin_right = 626.0
+margin_bottom = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="add-node" type="MenuButton" parent="panel/vbox/Panel/toolbar"]
+margin_right = 85.0
+margin_bottom = 20.0
+text = "Add node +"
+items = [ "Composite", null, 0, false, false, 0, 0, null, "Composite", false, "Decorator", null, 0, false, false, 1, 0, null, "Decorator", false, "Leaves", null, 0, false, false, 2, 0, null, "Leaves", false, "", null, 0, false, false, -1, 0, null, "", true, "New Leaf +", null, 0, false, false, 0, 0, null, "", false ]
+switch_on_hover = true
+
+[node name="graph" type="GraphEdit" parent="panel/vbox"]
+margin_top = 24.0
+margin_right = 626.0
+margin_bottom = 346.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+right_disconnects = true
+scroll_offset = Vector2( -235, -157 )
+
+[node name="variable-list" parent="panel/vbox/graph" instance=ExtResource( 3 )]
+assign_param_dialog = NodePath("../../../../assign-param-dialog")
+
+[node name="create-node-dialog" parent="." instance=ExtResource( 2 )]
+
+[node name="assign-param-dialog" parent="." instance=ExtResource( 4 )]
+visible = false

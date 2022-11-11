@@ -1,0 +1,91 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://addons/btreeLogic/interface/param.gd" type="Script" id=1]
+[ext_resource path="res://addons/btreeLogic/interface/theming/normal_close_btn.tres" type="StyleBox" id=2]
+[ext_resource path="res://addons/btreeLogic/interface/theming/hover_close_btn.tres" type="StyleBox" id=3]
+[ext_resource path="res://addons/btreeLogic/interface/theming/normal_save_btn.tres" type="StyleBox" id=4]
+[ext_resource path="res://addons/btreeLogic/interface/theming/hover_save_btn.tres" type="StyleBox" id=5]
+
+[sub_resource type="StyleBoxFlat" id=1]
+resource_local_to_scene = true
+bg_color = Color( 0.6, 0.6, 0.6, 0.0156863 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+content_margin_left = 4.0
+content_margin_right = 4.0
+bg_color = Color( 0.129412, 0.152941, 0.372549, 0.643137 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.329412, 0.407843, 0.772549, 1 )
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id=3]
+content_margin_left = 4.0
+content_margin_right = 4.0
+bg_color = Color( 0.129412, 0.152941, 0.372549, 0 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.0156863, 0.00784314, 0.0980392, 1 )
+
+[node name="param" type="PanelContainer"]
+margin_right = 166.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 120, 0 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hbox" type="HBoxContainer" parent="."]
+margin_right = 231.0
+margin_bottom = 20.0
+alignment = 2
+
+[node name="param-name-edt" type="LineEdit" parent="hbox"]
+margin_right = 100.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 100, 0 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
+text = "param"
+align = 2
+expand_to_text_length = true
+
+[node name="param-type" type="OptionButton" parent="hbox"]
+margin_left = 104.0
+margin_right = 160.0
+margin_bottom = 20.0
+text = "[Arr]"
+flat = true
+items = [ "[Arr]", null, false, 0, null, "[Dict]", null, false, 1, null, "[Str]", null, false, 2, null, "[Num]", null, false, 3, null ]
+selected = 0
+
+[node name="save-btn" type="Button" parent="hbox"]
+margin_left = 164.0
+margin_right = 205.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 40, 0 )
+custom_colors/font_color = Color( 0.286275, 0.207843, 0.294118, 1 )
+custom_styles/hover = ExtResource( 5 )
+custom_styles/normal = ExtResource( 4 )
+text = "Save"
+
+[node name="close-btn" type="Button" parent="hbox"]
+margin_left = 209.0
+margin_right = 231.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 22, 0 )
+custom_styles/hover = ExtResource( 3 )
+custom_styles/normal = ExtResource( 2 )
+text = "x"
+
+[connection signal="focus_exited" from="hbox/param-name-edt" to="." method="_on_paramnameedt_focus_exited"]
+[connection signal="text_entered" from="hbox/param-name-edt" to="." method="_on_paramnameedt_text_entered"]
+[connection signal="item_selected" from="hbox/param-type" to="." method="_on_paramtype_item_selected"]
+[connection signal="pressed" from="hbox/save-btn" to="." method="_on_savebtn_pressed"]
+[connection signal="pressed" from="hbox/close-btn" to="." method="_on_closebtn_pressed"]
