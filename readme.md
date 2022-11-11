@@ -25,10 +25,10 @@ Typical story about cristals, and evil entity that comes every now and then, the
 
 > Be Smart, less feature and more fun gameplay
 
--> Ridicoulous amount of guns, like stupidly ridiculous amounts
--> Quest systems: All quests are fetch quests, the only thing that changes is the object target name (green macguffin, super macguffin) and the way its presented.
--> Exploding Barrels, period.
--> Healing chickens, period.
+- > Ridicoulous amount of guns, like stupidly ridiculous amounts
+- > Quest systems: All quests are fetch quests, the only thing that changes is the object target name (green macguffin, super macguffin) and the way its presented.
+- > Exploding Barrels, period.
+- > Healing chickens, period.
 
 ### Features
 - Weapon stack:
