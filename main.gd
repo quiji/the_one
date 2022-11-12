@@ -8,4 +8,4 @@ func _ready():
 	
 	OS.window_maximized = true
 
-	#SceneSwitcher.change_scene("res://levels/prototype.tscn")
+	SceneSwitcher.change_scene("res://world/prototype.tscn")

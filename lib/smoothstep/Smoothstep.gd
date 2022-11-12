@@ -1,5 +1,7 @@
 extends Node
 
+class_name Smoothstep
+
 static func start2(t): return t * t
 static func start3(t): return t * t * t
 static func start4(t): return t * t * t * t
