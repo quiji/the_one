@@ -7,3 +7,7 @@
 
 [node name="Hero" parent="." index="0" instance=ExtResource( 2 )]
 position = Vector2( 132, 100 )
+
+[node name="Camera2D" type="Camera2D" parent="Hero" index="2"]
+current = true
+zoom = Vector2( 0.25, 0.25 )

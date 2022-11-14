@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://world/characters/hero/assets/body.png" type="Texture" id=1]
 [ext_resource path="res://world/characters/hero/Body.gd" type="Script" id=2]
 [ext_resource path="res://world/characters/hero/assets/beak.png" type="Texture" id=3]
 [ext_resource path="res://world/characters/hero/assets/shadow.png" type="Texture" id=4]
 [ext_resource path="res://world/characters/hero/assets/hand.png" type="Texture" id=5]
+[ext_resource path="res://world/characters/hero/assets/sword.png" type="Texture" id=6]
+[ext_resource path="res://world/characters/hero/armsHolder.gd" type="Script" id=7]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -142,20 +144,31 @@ texture = ExtResource( 4 )
 
 [node name="holder" type="Node2D" parent="."]
 
-[node name="leftHand" type="Sprite" parent="holder"]
-position = Vector2( -5.08494, -7.96732 )
-texture = ExtResource( 5 )
-flip_h = true
-
-[node name="Line2D" type="Line2D" parent="holder/leftHand"]
-points = PoolVector2Array( 3.05096, 0.78039, 1.52548, -3.6098, 0, 0 )
+[node name="rightArm" type="Line2D" parent="holder"]
+position = Vector2( -10.8777, -5.06716 )
+scale = Vector2( 1, 1 )
+points = PoolVector2Array( 0, 0, 2.17554, -2.98657, 10.8777, -0.932844 )
 width = 2.0
 default_color = Color( 0.109804, 0.0901961, 0.211765, 1 )
 
+[node name="leftArm" type="Line2D" parent="holder"]
+position = Vector2( 10.8777, 5.06716 )
+scale = Vector2( 1, 1 )
+points = PoolVector2Array( 0, 0, -2.17554, -5.01343, -10.8777, -11.0672 )
+width = 2.0
+default_color = Color( 0.109804, 0.0901961, 0.211765, 1 )
+
+[node name="rightHand" type="Sprite" parent="holder"]
+position = Vector2( -10.8777, -5.06716 )
+rotation = -2.70565
+scale = Vector2( 1, 1 )
+texture = ExtResource( 5 )
+
 [node name="back_beak" type="Sprite" parent="holder"]
 visible = false
-position = Vector2( -4, -7 )
+position = Vector2( 4, -7 )
 texture = ExtResource( 3 )
+flip_h = true
 flip_v = true
 hframes = 3
 frame = 1
@@ -178,11 +191,37 @@ polygon = PoolVector2Array( 0, 0, 1, 0, 1, 1, 0, 1 )
 position = Vector2( -5, -8 )
 polygon = PoolVector2Array( 0, 0, 1, 0, 1, 1, 0, 1 )
 
-[node name="rightHand" type="Sprite" parent="holder"]
-position = Vector2( 5.08494, 1.96732 )
-texture = ExtResource( 5 )
+[node name="armsHolder" type="Node2D" parent="holder"]
+rotation = 3.57753
+script = ExtResource( 7 )
 
-[node name="Line2D" type="Line2D" parent="holder/rightHand"]
-points = PoolVector2Array( -3.05096, -5.18039, -1.52548, -6.5902, 0, 0 )
-width = 2.0
-default_color = Color( 0.109804, 0.0901961, 0.211765, 1 )
+[node name="left" type="Position2D" parent="holder/armsHolder"]
+position = Vector2( -12, 0 )
+
+[node name="leftHand" type="RemoteTransform2D" parent="holder/armsHolder/left"]
+remote_path = NodePath("../../../leftHand")
+
+[node name="leftArm" type="RemoteTransform2D" parent="holder/armsHolder/left"]
+remote_path = NodePath("../../../leftArm")
+update_rotation = false
+
+[node name="right" type="Position2D" parent="holder/armsHolder"]
+position = Vector2( 12, 0 )
+
+[node name="rightHand" type="RemoteTransform2D" parent="holder/armsHolder/right"]
+remote_path = NodePath("../../../rightHand")
+
+[node name="rightArm" type="RemoteTransform2D" parent="holder/armsHolder/right"]
+remote_path = NodePath("../../../rightArm")
+update_rotation = false
+
+[node name="leftHand" type="Sprite" parent="holder"]
+position = Vector2( 10.8777, 5.06716 )
+rotation = -2.70565
+scale = Vector2( 1, 1 )
+texture = ExtResource( 5 )
+flip_h = true
+
+[node name="sword" type="Sprite" parent="holder/leftHand"]
+texture = ExtResource( 6 )
+offset = Vector2( -8, -8 )

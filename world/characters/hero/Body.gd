@@ -116,20 +116,14 @@ func _updateEyeStates(data: Dictionary) -> void:
 		$holder/rightEye.position = data.right.position
 	
 
-func _updateHand(hand, direction: Vector2) -> void:
-
-	var short_factor: float = direction.dot(Vector2.DOWN)
-	var is_back: bool = short_factor < 0.0
+func _updateHandDrawOrder(hand) -> void:
+	var is_back: bool = hand.position.normalized().dot(Vector2.DOWN) < 0.0
 
 	if is_back and hand.get_index() > 2:
 		$holder.move_child(hand, 0)
 	elif not is_back and hand.get_index() < 2:
 		$holder.move_child(hand, $holder.get_child_count() - 1)
 
-
-	hand.position = direction * lerp(14.0, 6.0, abs(short_factor)) + Vector2(0.0, -3.0)
-	hand.get_child(0).points[0] = -hand.position * 0.6 + Vector2(0.0, -4.0)
-	hand.get_child(0).points[1] = -hand.position * 0.3 + Vector2(0.0, -6.0)
 
 func _process(delta):
 
@@ -149,5 +143,7 @@ func _process(delta):
 	_updateBeakStates(BEAK_STATES[closest_index])
 	_updateEyeStates(EYE_STATES[closest_index])
 
-	_updateHand($holder/leftHand, -view_direction.tangent())
-	_updateHand($holder/rightHand, view_direction.tangent())
+	_updateHandDrawOrder($holder/leftHand)
+	_updateHandDrawOrder($holder/rightHand)
+
+	$holder/armsHolder.rotation = view_direction.angle() + PI/2.0
