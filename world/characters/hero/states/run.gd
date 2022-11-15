@@ -19,7 +19,7 @@ func run(delta: float) -> void:
 		go_to("idle")
 		return
 
-	actor.movement_velocity = movement_direction * 70.0
+	actor.movement_velocity = movement_direction * actor.movement_speedo
 	
 	
 func handle_input(event: InputEvent):

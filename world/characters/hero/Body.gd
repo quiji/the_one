@@ -82,11 +82,13 @@ func isCharacterSpriteHandler() -> bool: return true
 
 func idle() -> void:
 	anims.play("idle")
+	$holder/armsHolder.idle()
 
 
 func run() -> void:
 	
 	anims.play("run")
+	$holder/armsHolder.run()
 
 func _updateBeakStates(data: Dictionary) -> void:
 
@@ -103,6 +105,16 @@ func _updateBeakStates(data: Dictionary) -> void:
 		$holder/back_beak.frame = data.back.frame
 		$holder/back_beak.flip_h = data.back.flip_h
 		$holder/back_beak.flip_v = data.back.flip_v
+
+func _updateLegStates() -> void:
+	var vertical_t:float = view_direction.dot(Vector2.DOWN)
+	var horizontal_t: float = view_direction.dot(Vector2.RIGHT)
+	
+	$holder/legsHolder/leftLeg.position.x = lerp(0.0, -4.0, vertical_t)
+	$holder/legsHolder/rightLeg.position.x = lerp(0.0, 4.0, vertical_t)
+
+	$holder/legsHolder/leftLeg.position.y = lerp(0.0, 1.0, horizontal_t)
+	$holder/legsHolder/rightLeg.position.y = lerp(0.0, -1.0, horizontal_t)
 
 func _updateEyeStates(data: Dictionary) -> void:
 
@@ -124,9 +136,13 @@ func _updateHandDrawOrder(hand) -> void:
 	elif not is_back and hand.get_index() < 2:
 		$holder.move_child(hand, $holder.get_child_count() - 1)
 
+func equip(which: String) -> void:
+	$holder/armsHolder.equipWeapon(which, 3.0)
 
-func _process(delta):
+func _process(delta) -> void:
 
+	#if Engine.editor_hint:
+	#	return
 
 	view_direction = get_local_mouse_position().normalized()
 
@@ -142,6 +158,7 @@ func _process(delta):
 
 	_updateBeakStates(BEAK_STATES[closest_index])
 	_updateEyeStates(EYE_STATES[closest_index])
+	_updateLegStates()
 
 	_updateHandDrawOrder($holder/leftHand)
 	_updateHandDrawOrder($holder/rightHand)

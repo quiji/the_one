@@ -2,6 +2,8 @@ extends KinematicBody2D
 
 class_name CharacterBase
 
+export var movement_speedo: float = 120.0
+
 var state: CharacterActionStates
 var body
 var movement_velocity: Vector2
@@ -30,3 +32,7 @@ func _physics_process(delta):
 
 	move_and_slide(movement_velocity)
 
+
+func equip(which: String) -> void:
+
+	body.equip(which)

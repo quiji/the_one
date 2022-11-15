@@ -8,6 +8,18 @@ keep
 
 # Cliches
 
+# To-Do
+
+-[x] Legs!
+-[x] No-weapon mode
+-[x] Idle arm animations
+-[x] Run arm animations
+-[x] Punch animation
+-[x] Weapon grabbing logic
+-[x] Sword grabbable
+-[ ] Weapon throwing logic
+-[ ] Sword bullet
+
 ## Brain storming
 Exploding Barrels
 Infinite Inventory
